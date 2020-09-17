@@ -82,3 +82,10 @@ def bootstrapTest(data,n=10000):
         p=N/n
         s='p={}'.format(SciNote(p)) if p>0 else f'p<{1/n}'
     return p,s
+
+
+if __name__ == '__main__':
+    data=np.random.normal(loc=1, scale=..5, size=150)
+    
+    p,s=bootstrapTest(data,n=10000)
+    print(p,s)
