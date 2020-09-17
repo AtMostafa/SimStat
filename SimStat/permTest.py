@@ -40,7 +40,7 @@ class permTest:
         # Set statistics
         self.pVal = self.setPVal()
         self.highBand, self.lowBand = self.setBands()
-        self.pairwiseHighBand = self.etPairwiseHighBand()
+        self.pairwiseHighBand = self.setPairwiseHighBand()
         self.pairwiseLowBand = self.setPairwiseLowBand()
         self.significantDiff = self.setSignificantGroup()
 
@@ -178,3 +178,10 @@ class permTest:
                 break
         
         return previousIndex
+
+if __name__ == '__main__':
+    group1=np.random.normal(loc=1, scale=.1, size=150)
+    group2=np.random.normal(loc=1.2, scale=.1, size=150)
+    
+    pT=permTest(group1, group2, nIterations=10000, initGlobConfInterval=5, smoothSigma=0.05, randomSeed=1)
+    print(pT.pVal)
