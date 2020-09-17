@@ -75,5 +75,5 @@ def bootstrapTest(data,n=10000):
 if __name__ == '__main__':
     data=np.random.normal(loc=1, scale=.5, size=150)
     
-    p,s=bootstrapTest(data,n=10000)
+    p=bootstrapTest(data,n=10000)
     print(p)
