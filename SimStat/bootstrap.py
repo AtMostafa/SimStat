@@ -2,7 +2,8 @@ from sklearn.utils import check_random_state
 
 def bootstrap(data, n_bootstraps=10000, user_statistic=lambda x:np.mean(x,axis=1), kwargs=None, pass_indices=False, random_state=1):
     """Compute bootstraped statistics of a dataset.
-    Parameters
+    
+    inputs
     ----------
     data : array_like
         An n-dimensional data array of size n_samples by n_attributes
@@ -21,13 +22,13 @@ def bootstrap(data, n_bootstraps=10000, user_statistic=lambda x:np.mean(x,axis=1
         if True, then the indices of the points rather than the points
         themselves are passed to `user_statistic`
     random_state: RandomState or an int seed (0 by default)
-        A random number generator instance
+
     Returns
     -------
     distribution : ndarray
         the bootstrapped distribution of statistics (length = n_bootstraps)
 
-        code from [ https://github.com/astroML/astroML/blob/master/astroML/resample.py ]
+    code from [https://github.com/astroML/astroML/blob/master/astroML/resample.py]
     """
     # we don't set kwargs={} by default in the argument list, because using
     # a mutable type as a default argument can lead to strange results
@@ -54,6 +55,13 @@ def bootstrap(data, n_bootstraps=10000, user_statistic=lambda x:np.mean(x,axis=1
     return stat_bootstrap
 
 def bootstrapTest(data,n=10000):
+    """
+    Wrapper for 'bootstrap'
+    input: data: 1D ndarray
+    output: whether 'data''s bootstrap distribution differs from zero
+    p--> p-value
+    s--> a formatted string for p-value
+    """
     def SciNote(string):
         """
         Format numbers with Real scientific notation
@@ -72,7 +80,5 @@ def bootstrapTest(data,n=10000):
     if np.prod(CI) >0:
         N=len(b_data[b_data<0]) if CI[0]>0 else len(b_data[b_data>0])
         p=N/n
-        s='***' if p<.001 else '**' 
-        s=s if p<.01 else '*'
-        s=s if p<.05 else 'n.s.'
+        s='p={}'.format(SciNote(p)) if p>0 else f'p<{1/n}'
     return p,s
