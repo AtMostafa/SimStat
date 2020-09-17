@@ -1,4 +1,6 @@
 from sklearn.utils import check_random_state
+import numpy as np
+import logging
 
 def bootstrap(data, n_bootstraps=10000, user_statistic=lambda x:np.mean(x,axis=1), kwargs=None, pass_indices=False, random_state=1):
     """Compute bootstraped statistics of a dataset.
@@ -62,30 +64,17 @@ def bootstrapTest(data,n=10000):
     p--> p-value
     s--> a formatted string for p-value
     """
-    def SciNote(string):
-        """
-        Format numbers with Real scientific notation
-        Ex: 'p-val={}'.format(SciNote(p))
-        """
-        f = ScalarFormatter(useOffset=False, useMathText=True)
-        g = lambda x,pos : "${}$".format(f._formatSciNotation('%1.2e' % x))
-        fmt = FuncFormatter(g)
-        return fmt(string)
-
     b_data=bootstrap(data[~np.isnan(data)],n)
     CI=np.nanpercentile(b_data,[5,95])
     
-    s='n.s.'
-    p=1
     if np.prod(CI) >0:
         N=len(b_data[b_data<0]) if CI[0]>0 else len(b_data[b_data>0])
         p=N/n
-        s='p={}'.format(SciNote(p)) if p>0 else f'p<{1/n}'
-    return p,s
+    return p
 
 
 if __name__ == '__main__':
-    data=np.random.normal(loc=1, scale=..5, size=150)
+    data=np.random.normal(loc=1, scale=.5, size=150)
     
     p,s=bootstrapTest(data,n=10000)
-    print(p,s)
+    print(p)
