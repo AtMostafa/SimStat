@@ -60,9 +60,8 @@ def bootstrapTest(data,n=10000):
     """
     Wrapper for 'bootstrap'
     input: data: 1D ndarray
-    output: whether 'data''s bootstrap distribution differs from zero
+    output: whether 'data's bootstrap distribution differs from zero
     p--> p-value
-    s--> a formatted string for p-value
     """
     b_data=bootstrap(data[~np.isnan(data)],n)
     CI=np.nanpercentile(b_data,[5,95])
