@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: SimStat
+Version: 0.1
+Summary: A small non-parametric statistics package
+Home-page: https://github.com/atmostafa/simstat
+Author: Mostafa
+Author-email: EmailAtMostafa@gmail.com
+License: UNKNOWN
+Description: # SimStat
+        
+        Small Python package for non-parametric statistical tests.
+        
+        Now it includes bootstrap and permutation test.  I might add more functions as I need them later on.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
