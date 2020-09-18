@@ -10,7 +10,7 @@ def bootstrapTest(data,n=10000):
     output: whether 'data's bootstrap distribution differs from zero
     p--> p-value
     """
-    b_data=bootstrap.bootstrap(data[~np.isnan(data)],n)
+    b_data=bootstrap(data[~np.isnan(data)],n)
     CI=np.nanpercentile(b_data,[5,95])
     
     p=1
