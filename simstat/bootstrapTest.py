@@ -1,4 +1,4 @@
-import bootstrap
+from . import bootstrap
 import numpy as np
 
 def bootstrapTest(data,n=10000):
