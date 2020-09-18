@@ -2,7 +2,7 @@ from sklearn.utils import check_random_state
 import numpy as np
 import logging
 
-__all__=['bootstrap']
+__all__=['bootstrap'] #everything that will be imported by import *, like in __init__
 
 def bootstrap(data, n_bootstraps=10000, user_statistic=lambda x:np.mean(x,axis=1), kwargs=None, pass_indices=False, random_state=1):
     """Compute bootstraped statistics of a dataset.

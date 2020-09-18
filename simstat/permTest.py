@@ -1,6 +1,6 @@
 import numpy as np
 
-__all__=['permTest']
+__all__=['permTest'] #everything that will be imported by import *, like in __init__
 
 class permTest:
     """

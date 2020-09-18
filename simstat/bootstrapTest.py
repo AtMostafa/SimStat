@@ -1,7 +1,7 @@
 from . import bootstrap
 import numpy as np
 
-__all__=['bootstrapTest']
+__all__=['bootstrapTest'] #everything that will be imported by import *, like in __init__
 
 def bootstrapTest(data,n=10000):
     """
