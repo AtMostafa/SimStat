@@ -1,6 +1,8 @@
 from . import bootstrap
 import numpy as np
 
+__all__=['bootstrapTest']
+
 def bootstrapTest(data,n=10000):
     """
     Wrapper for 'bootstrap'

@@ -1,4 +1,7 @@
 import numpy as np
+
+__all__=['permTest']
+
 class permTest:
     """
     A general-purpose permutation test, based on "Fujisawa 2008 Nature Neuroscience"
